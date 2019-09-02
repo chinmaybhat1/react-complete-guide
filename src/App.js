@@ -3,6 +3,7 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+  
   state = {
     persons: [
       {name:"Chinmay", age:27},
@@ -11,10 +12,16 @@ class App extends Component {
       {name:"Parameshwara", age:64}
     ]
   }
+
+  switchNameHandler = () => {
+    console.log("Switch name handler called");
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Let's get ReactV</h1>
+        <button onClick={this.switchNameHandler}>Switch Name</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age}>Hobbies: Badminton, Football, Carrom</Person>
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
