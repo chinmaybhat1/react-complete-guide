@@ -13,10 +13,10 @@ class App extends Component {
     ]
   }
 
-  switchStateHandler = () => {
+  switchStateHandler = (name) => {
     this.setState({
       persons: [
-        {name:"Chinmay Bhat", age:26},
+        {name:name, age:26},
         {name:"Chithra Bhat", age:30},
         {name:"Laxmi P Bhat", age:55},
         {name:"U Parameshwara Bhat", age:64}
@@ -29,11 +29,24 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Let's get ReactV</h1>
-        <button onClick={this.switchStateHandler}>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}>Hobbies: Badminton, Football, Carrom</Person>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-        <Person name={this.state.persons[3].name} age={this.state.persons[3].age}/>
+        {/* Inefficient way of passing function args */}
+        <button onClick={() => this.switchStateHandler("Chinmay Bhat")}>Switch Name</button>
+        {/* Better way of passing function args */}
+        <Person 
+          name={this.state.persons[0].name} 
+          age={this.state.persons[0].age}
+          click={this.switchStateHandler.bind(this, "Chinmay")}
+        >Hobbies: Badminton, Football, Carrom
+        </Person>
+        <Person 
+          name={this.state.persons[1].name} 
+          age={this.state.persons[1].age}/>
+        <Person 
+          name={this.state.persons[2].name} 
+          age={this.state.persons[2].age}/>
+        <Person 
+          name={this.state.persons[3].name} 
+          age={this.state.persons[3].age}/>
       </div>
     );
   }
