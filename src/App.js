@@ -13,15 +13,23 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = () => {
-    console.log("Switch name handler called");
+  switchStateHandler = () => {
+    this.setState({
+      persons: [
+        {name:"Chinmay Bhat", age:26},
+        {name:"Chithra Bhat", age:30},
+        {name:"Laxmi P Bhat", age:55},
+        {name:"U Parameshwara Bhat", age:64}
+      ]
+    })
+    console.log(this.state.persons[0].name);
   }
 
   render() {
     return (
       <div className="App">
         <h1>Let's get ReactV</h1>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <button onClick={this.switchStateHandler}>Switch Name</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age}>Hobbies: Badminton, Football, Carrom</Person>
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
